@@ -1,4 +1,3 @@
-#include<iostream.h>
 #include<conio.h>
 #include<graphics.h>
 #include<stdlib.h>
@@ -11,7 +10,7 @@ char cor[60][60] = {0};
 
 void demo();
 
-void demox(char *s, int top, int bottom);
+void demox(char *s, int x, int top, int bottom, int font, int size);
 
 void write(char *s, int x, int top, int bottom, int font, int size);
 
@@ -21,7 +20,7 @@ void seta();
 
 void deca(int i, int j);
 
-void min(int i, int j, int *p, int *q);
+void mine(int i, int j, int *p, int *q);
 
 void chess();
 
@@ -37,10 +36,10 @@ void main() {
     clrscr();
     initgraph(&d, &d, "c:\\borlandc\\bgi");
     demo();
-    getch();
+    
     closegraph();
-    cout << "Enter First Position(x,y):";
-    cin >> i >> j;
+    printf("Enter First Position(x,y):");
+    scanf("%d %d", &i, &j);
     i--;
     j--;
     d = 0;
@@ -62,7 +61,7 @@ void main() {
 
         oldi = i;
         oldj = j;
-        min(oldi, oldj, &i, &j);
+        mine(oldi, oldj, &i, &j);
         deca(oldi, oldj);
 
 
@@ -86,10 +85,10 @@ void seta() {
             if (i + 1 <= 7 && j + 2 <= 7) c++;
             if (i + 2 <= 7 && j + 1 <= 7) c++;
             a[i][j] = c;
-        }//for
+        }
 }
 
-void min(int i, int j, int *p, int *q) {
+void mine(int i, int j, int *p, int *q) {
     int min = 10;
 
     if (i + 2 <= 7 && j - 1 >= 0 && b[i + 2][j - 1] != 1)
@@ -217,7 +216,7 @@ void write(char *s, int x, int top, int bottom, int font, int size) {
             setcolor(7);
             outtextxy(x + 5, i + 5, s);
             outtextxy(x, i, s);
-        }//for
+        }
     else
         for (i = top; i >= bottom; i -= 3) {
             setcolor(8);
@@ -228,7 +227,7 @@ void write(char *s, int x, int top, int bottom, int font, int size) {
             setcolor(7);
             outtextxy(x, i, s);
             outtextxy(x + 5, i + 5, s);
-        }//for
+        }
 
 }
 
@@ -239,10 +238,9 @@ void demox(char *s, int x, int top, int bottom, int font, int size) {
         write(s, x, bottom - x1, bottom, font, size);
         x1 /= 2;
         write(s, x, bottom, bottom - x1, font, size);
-    }//while
+    }
 }
 
-/***********************/
 void demo() {
     setbkcolor(7);
     demox("VAHID", 50, 50, 150, 3, 8);
