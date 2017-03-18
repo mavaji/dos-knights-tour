@@ -1,3 +1,8 @@
+/**
+ * author: Vahid Mavaji
+ * Year: 2000
+ */
+
 #include<conio.h>
 #include<graphics.h>
 #include<stdlib.h>
@@ -36,7 +41,7 @@ void main() {
     clrscr();
     initgraph(&d, &d, "c:\\borlandc\\bgi");
     demo();
-    
+
     closegraph();
     printf("Enter First Position(x,y):");
     scanf("%d %d", &i, &j);
